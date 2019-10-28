@@ -1,6 +1,6 @@
 try:
-    x = int(input("Geben sie die Stunden ihrer geschätzten Ankuftszeit an! "))
-    y = int(input("Geben sie die Minuten ihrer geschätzten Ankuftszeit an! "))
+    x = int(input("Geben sie die Stunden ihrer geschätzten Ankuftszeit an > "))
+    y = int(input("Geben sie die Minuten ihrer geschätzten Ankuftszeit an > "))
 except:
     print("Bitte neustarten und zweistelligen Zahlenwert mit 0<=Stunden<=23 und 0<=Minuten<=59 eingeben!")
     exit(-1)
