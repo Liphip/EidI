@@ -15,3 +15,5 @@ y = ("|" + (" " * width) + "|\n")
 print(x)
 print(y * hight, end="")
 print(x)
+
+########
