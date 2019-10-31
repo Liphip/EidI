@@ -1,3 +1,8 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
 x = int(input("Geben sie die Stunden ihrer geschätzten Ankuftszeit an > "))
 y = int(input("Geben sie die Minuten ihrer geschätzten Ankuftszeit an > "))
 
