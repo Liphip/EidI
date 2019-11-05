@@ -5,12 +5,18 @@ except:
     exit(-1)
 
 bin = ''
+gerade = False
 
 if dec % 2 == 0:
-    dec = dec // 2
+    gerade = True
 
-while dec > 0:
+while dec > 1:
     bin += str(dec % 2)
     dec = dec // 2
+
+if gerade:
+    bin = '1' + bin
+else:
+    bin += '1'
 
 print(bin)
