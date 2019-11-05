@@ -13,10 +13,8 @@ if dec % 2 == 0:
 while dec > 1:
     bin += str(dec % 2)
     dec = dec // 2
+    print(bin)
 
-if gerade:
-    bin = '1' + bin
-else:
-    bin += '1'
+bin = '1' + bin[::-1]
 
 print(bin)
