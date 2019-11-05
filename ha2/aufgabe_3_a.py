@@ -5,10 +5,7 @@ Licensed under MIT (https://opensource.org/licenses/mit-license.php).
 
 binary_reversed = input('Binary > ')[::-1]
 
-# The following code could be made (REALLY) easily using:
-#     int(binary, base=2)
-
-if binary_reversed.count('0') + binary_reversed.count('1') != len(binary_reversed) or len(binary_reversed) == 0:
+if not binary_reversed.isnumeric() or len(binary_reversed) == 0:
     print('Invalide Binärzahl!')
 else:
     decimal = 0
