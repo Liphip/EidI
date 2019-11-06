@@ -1,3 +1,8 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
 bin = input('Geben sie eine positive Binärzahl ein >>>')
 
 try:
