@@ -10,12 +10,12 @@ if not dec.isnumeric():
     exit(-1)
 
 dec = int(dec)
-bin = ''
+binary = ''
 
 while dec > 1:
-    bin += str(dec % 2)
+    binary += str(dec % 2)
     dec = dec // 2
 
-bin = (('1' + bin[::-1]) if dec != 0 else '0')
+binary = (('1' + binary[::-1]) if dec != 0 else '0')
 
-print(bin)
+print(binary)
