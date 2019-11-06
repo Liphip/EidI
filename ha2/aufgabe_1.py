@@ -7,8 +7,7 @@ st = input('Bitte geben sie eine Zeichenkette ein >>> ').lower()
 voc = input('Bitte geb sie einen Vocal an >>> ').lower()
 vocpre = ['a', 'e', 'i', 'o', 'u']
 
-for i in st:
-    if i  in vocpre:
-        st = st.replace(i, voc)
+for i in vocpre:
+    st = st.replace(i, voc)
 
 print(st)
