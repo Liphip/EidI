@@ -3,25 +3,19 @@ Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
 Licensed under MIT (https://opensource.org/licenses/mit-license.php).
 """
 
-decimal = input('Decimal > ')
+dec = input('Bitte geben sie eine Dezimalzahl ein >>>')
 
-if not decimal.isnumeric() or len(decimal) == 0:
-    print('Invalide Dezimalzahl!')
-else:
-    decimal = int(decimal)
-    binary = ''
-    
-    k = 0
-    while 2**k < decimal:
-        k += 1
-    
-    while len(binary) < k:
-        p = 2**(k - len(binary) - 1)
-        
-        if decimal - p >= 0:
-            binary += '1'
-            decimal -= p
-        else:
-            binary += '0'
-    
-    print(binary)
+if not dec.isnumeric() or int(dec) < 0:
+    print('Bitte gültige Dezimalzahl eingeben.')
+    exit(-1)
+
+dec = int(dec)
+binary = ''
+
+while dec > 1:
+    binary += str(dec % 2)
+    dec = dec // 2
+
+binary = (('1' + binary[::-1]) if dec != 0 else '0')
+
+print(binary)
