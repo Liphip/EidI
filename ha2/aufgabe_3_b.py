@@ -3,9 +3,9 @@ Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
 Licensed under MIT (https://opensource.org/licenses/mit-license.php).
 """
 
-dec = input('Bitte geben sie einen Dezimalzahl ein >>>')
+dec = input('Bitte geben sie eine Dezimalzahl ein >>>')
 
-if not dec.isnumeric():
+if not dec.isnumeric() or int(dec) < 0:
     print('Bitte gültige Dezimalzahl eingeben.')
     exit(-1)
 
