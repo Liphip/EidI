@@ -1266,7 +1266,7 @@ Adipinsäure
 Adipinsäuredinitril
 Adipositas
 Adipositaschirurgie
-Adipositasprävalenz 
+Adipositasprävalenz
 Adjektiv
 Adjektivattribut
 Adjektivform
@@ -47127,7 +47127,7 @@ Leprosenhaus
 Leprosorien
 Leptin
 Leptinkonzentration
-Leptinresistenz 
+Leptinresistenz
 Lepton
 Leptospirose
 Leptotän
@@ -95840,7 +95840,7 @@ adipinsäuredinitril
 adipös
 adipositas
 adipositaschirurgie
-adipositasprävalenz 
+adipositasprävalenz
 adjektiv
 adjektivattribut
 adjektivform
@@ -166780,7 +166780,7 @@ leprosenfriedhof
 leprosenhaus
 leptin
 leptinkonzentration
-leptinresistenz 
+leptinresistenz
 leptosom
 leptospirose
 leptotän

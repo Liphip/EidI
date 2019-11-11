@@ -3,7 +3,7 @@ def cube_root(value: float, e: float = 0.01):
         return 0  # FIXME
     
     if value < 1:
-        limit = (value, 1)
+        limit = (value, 1)  # This 1 is ugly but not code-breaking
     else:
         limit = (0, value)
     
@@ -20,4 +20,4 @@ def cube_root(value: float, e: float = 0.01):
     return guess
 
 
-print(cube_root(0.01, 0.00000001))
+print(cube_root(-4, 0.00000001))
