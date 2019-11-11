@@ -1,11 +1,15 @@
 def cube_root(value: float, e: float = 0.01):
     if e <= 0:
         return 0  # FIXME
-    
-    if value < 1:
-        limit = (value, 1)  # This 1 is ugly but not code-breaking
+
+    if 0 <= value < 1:
+        limit = (value, 1)
+    elif -1 < value < 0:
+        limit = (-1, value)
+    elif value <= -1:
+        limit = (value, -1)
     else:
-        limit = (0, value)
+        limit = (1, value)
     
     guess = (limit[0] + limit[1]) / 2.0
     
