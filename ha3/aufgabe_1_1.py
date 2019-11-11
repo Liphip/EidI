@@ -1,5 +1,5 @@
 def find_pos(string: str, letter: chr):
-    return string.index(letter)  # FIXME?
+    return string.index(letter)
 
 
 def convert(in_file: str, out_file: str):
