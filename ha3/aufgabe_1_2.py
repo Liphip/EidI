@@ -1,4 +1,4 @@
-word = input('> ')
+word = input('Geben sie das Wort ein, das sie suchen > ')
 
 with open('dictionary.txt', 'r') as read:
     lines = read.readlines()

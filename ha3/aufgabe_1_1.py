@@ -3,8 +3,8 @@ def find_pos(string: str, letter: chr):
 
 
 def convert(in_file: str, out_file: str):
-    # The file de_DE_frami.dic has the wrong encoding. Without the additional parameter
-    # Python will spit out and error.
+    # de_DE_frami.dic ist falsch encodiert (auf jeden fall für mich, nutze Arch Linux) und muss
+    # deshalb mit dem encoding 'latin' eingelesen werden, um Fehler zu verhindern.
 
     with open(in_file, 'r', encoding='latin') as read:
         with open(out_file, 'w', encoding='utf-8') as write:
