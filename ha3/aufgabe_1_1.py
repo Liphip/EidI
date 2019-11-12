@@ -7,7 +7,7 @@ def convert(in_file: str, out_file: str):
     # Python will spit out and error.
 
     with open(in_file, 'r', encoding='latin') as read:
-        with open(out_file, 'w') as write:
+        with open(out_file, 'w', encoding='utf-8') as write:
             for line in read.readlines():
                 if '#' in line:
                     line = line[:find_pos(line, '#')]
