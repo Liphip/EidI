@@ -1,3 +1,8 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
 word = input('Geben sie das Wort ein, das sie suchen > ')
 
 with open('dictionary.txt', 'r') as read:

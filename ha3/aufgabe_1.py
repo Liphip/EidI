@@ -1,3 +1,8 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
 def cube_root(value: float, e: float = 0.01):
     if e <= 0:
         exit('e darf nicht weniger als 0 sein.')

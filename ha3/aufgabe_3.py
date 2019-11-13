@@ -1,3 +1,8 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
 def lies_zeile(string: str) -> tuple:
     if string.count(',') != 2:
         exit('Formatfehler: Keine 2 Kommas in Zeile Gefunden.')
