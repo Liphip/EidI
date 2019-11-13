@@ -40,7 +40,7 @@ def schauspieler_zusammenarbeit(data: list, name: str) -> list:
     return actors
 
 
-def fuege_ein(data: list, insert: tuple):
+def fuege_ein(data: list, insert: tuple) -> list:
     data = data[:]  # Copy the list
 
     for i in range(len(data)):
