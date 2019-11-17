@@ -1,13 +1,10 @@
-def count(n: int, i: int = 1) -> int:
-    if n <= 1:
-            return 1
-    elif n == 2:
-        return 2
-    else:
-        return count(n - 1) * count(n - (n - 1) - 1)
+def count(i: int) -> int:
+    if i == 0:
+        return 1
 
+    n = 0
 
-array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    for j in range(0, i):
+        n += count(j) * count(i - j - 1)
 
-for i in array:
-    print(count(i))
+    return n
