@@ -1,11 +1,15 @@
 def intSuperlist(inp: list) -> bool:
     if len(inp) == 0:
         return False
+
     for i in inp:
-        if type(i) == list and type(i) != intSuperlist(i):
+
+        if type(i) == list and not intSuperlist(i):
             return False
+
         elif type(i) != int and type(i) != list:
             return False
+
     return True
 
 

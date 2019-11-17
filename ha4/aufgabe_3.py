@@ -13,6 +13,7 @@ def mini(i: float) -> float:
 def smaller(i: float) -> float:
     if mini(i) < i:
         return smaller(mini(i))
+
     else:
         return i
 
