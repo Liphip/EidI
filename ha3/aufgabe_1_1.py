@@ -1,26 +1,30 @@
-import time
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
 
 
-def find_pos(word, letter):
-    for i in range(len(word)):
-        if word[i] == letter:
-            return i
-    return -1
+def find_pos(string: str, letter: chr):
+    return string.index(letter)
 
 
-def copyToTxt(source, target):
-    s = open(source, 'r')
-    t = open(target, 'w')
-    sl = s.readlines()
-    for i in range(len(sl)):
-        word = sl[i]
-        if word[0] != '#' and word[0] != '\n':
-            pos = find_pos(word, '/')
-            t.write(word[:pos] + '\n')
-    s.close()
-    t.close()
-    print('[INFO] File converted!')
+def convert(in_file: str, out_file: str):
+    # de_DE_frami.dic ist falsch encodiert (auf jeden fall für mich, nutze Arch Linux) und muss
+    # deshalb mit dem encoding 'latin' eingelesen werden, um Fehler zu verhindern.
+
+    with open(in_file, 'r', encoding='latin') as read:
+        with open(out_file, 'w', encoding='utf-8') as write:
+            for line in read.readlines():
+                if '#' in line:
+                    line = line[:find_pos(line, '#')]
+
+                if '/' in line:
+                    line = line[:find_pos(line, '/')]
+
+                line = line.strip()
+
+                if len(line) != 0:
+                    write.write(line + '\n')
 
 
-if __name__ == '__main__':
-    copyToTxt('de_DE_frami.dic', 'dictionary.txt')
+convert('de_DE_frami.dic', 'dictionary.txt')

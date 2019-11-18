@@ -1,13 +1,14 @@
-def posInDoc(document, word):
-    doc = open(document, 'r')
-    doclist = doc.readlines()
-    length = len(doclist)
-    for i in range(length):
-        if doclist[i] == word + '\n':
-            return i
-    
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
 
-if __name__ == '__main__':
-    word = input('Bitte geben sie das Wort an, dessen Position sie feststellen wollen >>>')
-    print('Das Wort ' + word + ' wird zum ersten Mal in Zeile ' + str(
-        posInDoc('dictionary.txt', word)) + ' in dieser Schreibweise genannt.')
+word = input('Geben sie das Wort ein, das sie suchen > ')
+
+with open('dictionary.txt', 'r', encoding='utf-8') as read:
+    lines = read.readlines()
+
+    for i in range(len(lines)):
+        if lines[i].replace('\n', '') == word:
+            print(i + 1)
+            break
