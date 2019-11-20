@@ -5,8 +5,6 @@ Licensed under MIT (https://opensource.org/licenses/mit-license.php).
 
 
 def anzahl(n: int) -> int:
-    """ Was zu beweisen ist. """
-    
     if n == 0:
         return 1
     
