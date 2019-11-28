@@ -1,17 +1,23 @@
-def intSuperlist(inp: list) -> bool:
-    if len(inp) == 0:
-        return False
 
-    for i in inp:
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
 
-        if type(i) == list and not intSuperlist(i):
+
+def intSuperliste(lst: list) -> bool:
+    save_type = None
+
+    for element in lst:
+        if save_type is None:
+            save_type = type(element)
+
+        if type(element) == list and not intSuperliste(element):
             return False
-
-        elif type(i) != int and type(i) != list:
+        elif (type(element) != list and type(element) != int) or type(element) != save_type:
             return False
 
     return True
 
-
-def copy(inp: list) -> list:
-    return [(i if type(i) == int else copy(i)) for i in inp]
+def Kopie(lst: list) -> list:
+    return [(i if type(i) == int else Kopie(i)) for i in lst[:]]
