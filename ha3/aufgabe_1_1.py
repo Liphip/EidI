@@ -4,7 +4,7 @@ Licensed under MIT (https://opensource.org/licenses/mit-license.php).
 """
 
 
-def find_pos(string: str, letter: chr):
+def find_pos(string: str, letter: chr) -> int:
     return string.index(letter)
 
 
