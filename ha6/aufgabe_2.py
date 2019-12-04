@@ -11,22 +11,25 @@ def init(x: int) -> tuple:
 
 
 def strategie(spielstand: tuple, wb: dict = {}):
-    def strategie_memoization(uebrig: int, wb: dict = wb):
+    for i in range(len(spielstand)):
+        uebrig = spielstand[i]
+
         if uebrig in wb:
-            return wb[uebrig]
+            return -1 if wb[uebrig] == -1 else i, wb[uebrig]
+
         if uebrig == 1:
             wb[uebrig] = -1
-            return -1
-        if 2 <= uebrig and uebrig <= 4:
+        elif 2 <= uebrig and uebrig <= 4:
             wb[uebrig] = uebrig - 1
-            return uebrig - 1
+            return i, uebrig - 1
         else:
-            for weniger in range(1, 4):
-                if strategie_memoization(uebrig - weniger, wb) == -1:
-                    wb[uebrig] = weniger
-                    return weniger
-            return -1
-    for i in range(len(spielstand)):
-        if spielstand[i] == 1:
+            spielstandLst = list(spielstand)
 
-    return
+            for j in range(1, 4):
+                spielstandLst[i] = uebrig - j
+
+                if strategie(tuple(spielstandLst), wb) == -1:
+                    wb[uebrig] = j
+                    return i, j
+
+    return -1

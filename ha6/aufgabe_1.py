@@ -1,6 +1,10 @@
 leerbaum = ()
-begriffe = ["a", "an", "and", "by", "effects", "for", "from", "high", "in", "of", "on", "the", "to", "with"]
-haeufigkeit = [32, 7, 69, 13, 6, 15, 10, 8, 64, 142, 22, 79, 18, 9]
+
+
+def init2():
+    begriffe = ["a", "an", "and", "by", "effects", "for", "from", "high", "in", "of", "on", "the", "to", "with"]
+    haeufigkeit = [32, 7, 69, 13, 6, 15, 10, 8, 64, 142, 22, 79, 18, 9]
+    return (len(begriffe), begriffe, haeufigkeit)
 
 
 def gg(baum: list, faktor: int = 1):
@@ -12,15 +16,12 @@ def gg(baum: list, faktor: int = 1):
 
 def loeseRekursiv(i: int = 0, j: int = len(begriffe), wb: dict = {}):
     if (i, j) in wb:
-        # print(wb)
         return wb[(i, j)]
     if i == j:
         wb[(i, j)] = leerbaum
-        # print(wb)
         return leerbaum
     if j == i + 1:
         wb[(i, j)] = (leerbaum, i, leerbaum)
-        # print(wb)
         return (leerbaum, i, leerbaum)
     else:
         baum = (leerbaum, i, loeseRekursiv(i + 1, j))
@@ -30,8 +31,9 @@ def loeseRekursiv(i: int = 0, j: int = len(begriffe), wb: dict = {}):
             if gg((links, k, rechts)) < gg(baum):
                 baum = (links, k, rechts)
         wb[(i, j)] = baum
-        # print(wb)
         return baum
 
+
+(n, begriffe, haeufigkeit) = init2()
 
 print(loeseRekursiv(0, len(begriffe), {}))
