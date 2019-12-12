@@ -4,7 +4,7 @@ def Euklid(a,b):
 
 
 def istBruch(x):
-    return True if (type(n) == int for n in x) and x[1] >0 else False
+    return type(x[0]) == int and type(x[1]) == int and x[1] > 0
 
 def kuerze(x):
     assert istBruch(x), 'Leider handelt es sich um keinen Bruch'
