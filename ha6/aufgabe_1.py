@@ -1,3 +1,8 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
 leerbaum = ()
 
 
@@ -7,33 +12,40 @@ def init2():
     return (len(begriffe), begriffe, haeufigkeit)
 
 
-def gg(baum: list, faktor: int = 1):
-    if baum == leerbaum:
-        return 0
-    else:
-        return faktor * haeufigkeit[baum[1]] + gg(baum[0], faktor + 1) + gg(baum[2], faktor + 1)
+def gg(baum):
+    def gewichtet(baum, faktor):
+        if baum == leerbaum:
+            return 0
+        else:
+            return faktor * haeufigkeit[baum[1]] + \
+                   gewichtet(baum[0], faktor + 1) + \
+                   gewichtet(baum[2], faktor + 1)
+    
+    return gewichtet(baum, 1)
 
 
-def loeseRekursiv(i: int = 0, j: int = len(begriffe), wb: dict = {}):
+def loeseRekursiv(i, j, wb):
     if (i, j) in wb:
         return wb[(i, j)]
+    
     if i == j:
         wb[(i, j)] = leerbaum
         return leerbaum
     if j == i + 1:
         wb[(i, j)] = (leerbaum, i, leerbaum)
-        return (leerbaum, i, leerbaum)
+        return leerbaum, i, leerbaum
     else:
-        baum = (leerbaum, i, loeseRekursiv(i + 1, j))
-        for k in range(i + 1, j):
-            links = loeseRekursiv(i, k)
-            rechts = loeseRekursiv(k + 1, j)
-            if gg((links, k, rechts)) < gg(baum):
-                baum = (links, k, rechts)
-        wb[(i, j)] = baum
-        return baum
+        baum = (leerbaum, i, loeseRekursiv(i + 1, j, {}))
+    for k in range(i + 1, j):
+        links = loeseRekursiv(i, k, {})
+    rechts = loeseRekursiv(k + 1, j, {})
+    
+    if gg((links, k, rechts)) < gg(baum):
+        baum = (links, k, rechts)
+    
+    wb[(i, j)] = baum
+    return baum
 
 
 (n, begriffe, haeufigkeit) = init2()
-
-print(loeseRekursiv(0, len(begriffe), {}))
+print(loeseRekursiv(0, n, {}))

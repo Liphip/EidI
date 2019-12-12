@@ -1,35 +1,29 @@
 import random
 
 
-def init(x: int) -> tuple:
-    tpl: tuple = ()
-
-    for i in range(x):
-        tpl[i] = random.randint(1, x)
-
-    return tpl
+def init(x):
+    return tuple([random.randint(1, x + 1) for _ in range(7)])
 
 
-def strategie(spielstand: tuple, wb: dict = {}):
+def strategie(spielstand, wb={}):
     for i in range(len(spielstand)):
-        uebrig = spielstand[i]
-
-        if uebrig in wb:
-            return -1 if wb[uebrig] == -1 else i, wb[uebrig]
-
-        if uebrig == 1:
-            wb[uebrig] = -1
-        elif 2 <= uebrig and uebrig <= 4:
-            wb[uebrig] = uebrig - 1
-            return i, uebrig - 1
+        v = spielstand[i]
+        
+        if v in wb and wb[v] != -1:
+            return i, wb[v]
+        elif v == 1:
+            wb[v] = -1
+        elif 2 <= v <= 4:
+            wb[v] = v - 1
+            return i, v - 1
         else:
-            spielstandLst = list(spielstand)
-
-            for j in range(1, 4):
-                spielstandLst[i] = uebrig - j
-
-                if strategie(tuple(spielstandLst), wb) == -1:
-                    wb[uebrig] = j
-                    return i, j
-
+            s = list(spielstand)
+            
+            for r in range(1, 4):
+                s[i] = v - r
+                
+                if strategie(tuple(s), wb) == -1:
+                    wb[v] = r
+                    return i, r
+    
     return -1
