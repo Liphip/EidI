@@ -16,7 +16,7 @@ def istBruch(x):
 def kuerze(x):
     assert istBruch(x), 'Leider handelt es sich um keinen Bruch'
     return (n / Euklid(i for i in x) for n in x) if x != (0, 1) or not (
-                x[0] != 0 and Euklid(abs(x[0]), x[1]) == 1) else x
+            x[0] != 0 and Euklid(abs(x[0]), x[1]) == 1) else x
 
 
 def plus(x, y):
@@ -36,6 +36,7 @@ def mal(x, y):
 
 def teile(x, y):
     assert istBruch(x) and istBruch(y), 'Leider handelt es sich nicht um zwei Bruche'
+    if y[0] == 0: raise Exception("ZeroDivisionError")
     return kuerze((x[0] * y[1], x[1] * y[0]))
 
 
