@@ -23,4 +23,3 @@ def aufzaehlen(b):
 
 if __name__ == "__main__":
     pass
-    print(aufzaehlen(1))
