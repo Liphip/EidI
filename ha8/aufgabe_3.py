@@ -12,7 +12,7 @@ def det(M):
 
 
 def ausgabe(M):
-    return
+    return "\n".join("|".join([str(i[j]).center(3, " ") for j in range(len(i))]) for i in M)
 
 
 def aufzaehlen(b):
