@@ -13,15 +13,15 @@ def custom_op(liste):
 kleiner = lambda x, y: x < y if len(x) == len(y) else len(x) < len(y)
 
 
-def sortiere(kleiner,L):
+def sortiere(kleiner, L):
     trenner = 0
     while trenner != len(L):
-        for i in range(trenner,len(L)):
-            if kleiner(L[i],L[trenner]):
+        for i in range(trenner, len(L)):
+            if kleiner(L[i], L[trenner]):
                 L[trenner], L[i] = L[i], L[trenner]
         trenner += 1
     return L
 
+
 if __name__ == "__main__":
-    pass
-    print(sortiere(kleiner,["z","aaa","1","11111","ccv","22"]))
+    print(sortiere(kleiner, ["z", "aaa", "1", "11111", "ccv", "22"]))
