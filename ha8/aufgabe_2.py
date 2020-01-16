@@ -25,7 +25,12 @@ def min_moves(brett, position, n):
 
 
 if __name__ == "__main__":
-    pass
     size = 8
     position = (4, 4)
-    print(min_moves(einlesen(size, position), position, 1))
+    brett = einlesen(size, position)
+    d = min_moves(brett, position, 1)
+
+    for i in range(8):
+        for j in range(8):
+            print(brett[i][j], end='')
+        print()
