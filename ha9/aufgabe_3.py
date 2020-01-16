@@ -62,8 +62,8 @@ def erfuellbar(stand):
     if len([stand[(i, j)] for i in range(9) for j in range(9) if len(stand[(i, j)]) == 0]) >= 1:
         return False
     elif len([stand[(i, j)] for i in range(9) for j in range(9) if len(stand[(i, j)]) == 1]) == 81:
-        # print("Wir haben eine Loesung gefunden")
-        # ausgabe(stand)
+        print("Wir haben eine Loesung gefunden")
+        ausgabe(stand)
         return True
     else:
         nonsingletons = [(i, j, stand[(i, j)]) for i in range(9) for j in range(9) if len(stand[(i, j)]) > 1]
