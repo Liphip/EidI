@@ -172,6 +172,8 @@ def init1():
     stand[(8, 6)] = {4}
 
 
+
+
 # Sie duerfen diese Funktion nicht veraendern.
 def init2():
     # b={(i,j):{} for i in range(9) for j in range(9)}
@@ -241,9 +243,9 @@ def init3():
 
 
 if __name__ == "__main__":
-    print(sys.getrecursionlimit())
-    sys.setrecursionlimit(sys.getrecursionlimit())
-    print(sys.getrecursionlimit())
+    #print(sys.getrecursionlimit())
+    #sys.setrecursionlimit(10000)
+    #print(sys.getrecursionlimit())
 
     stand = {(i, j): set(range(1, 10)) for i in range(9) for j in range(9)}
     # stand[(6, 7)] = {6}
@@ -256,12 +258,13 @@ if __name__ == "__main__":
     # stand[(8, 5)] = {6}
     # stand[(8, 7)] = {8}
 
-    init3()
+    init1()
 
     # print("Wir wollen folgendes Sudoku loesen")
     # ausgabe(stand)
     # print("Ausgegeben!")
     # erfuellbar(stand)
     # ausgabe(wieviele(stand))
-    ausgabe(generiere(stand))
+    # ausgabe(generiere(stand))
     # print("Fertig!")
+    print(wieviele(stand))
