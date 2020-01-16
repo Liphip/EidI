@@ -1,0 +1,12 @@
+A|i)   f ∈ O(g) , da 7*n ≤ 7*n               für C=7   und n0 = 0  UND
+A|ii)  f ∈ O(g) , da n^3 + 100*n^2 ≤ 101*n^3 für C=101 und n0 = 1
+A|iii) f ∈ O(g) , da 4^n ≤ (2^2)^n           für C=1   und n0 = 0
+
+B|i)   n0 = 20
+B|ii)  n0 = 34
+B|iii) n0 = 20
+
+Anmerkung: Bitte mathemathisch klarer Ausdrücken! Ich könnte einfach für jede Teilaufgabe 10.000.000.000 als n0 hinschreiben, und die Aufgabe wäre korrekt beantwortet. Außerdem habe ich keine Rechnung
+angefügt, da nur eine "Angabe", keine "Berechnung" gefragt ist.
+
+

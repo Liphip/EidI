@@ -1,0 +1,7 @@
+Alle Werte für n0 erreicht mit c = 1.
+
+a) 1000 * n ≤ n^2 => 1000 * n = n * n => n muss mind. 1000 sein, da 1000 * 1000 ≤ 1000 * 1000
+   => n0 = 999
+b) 256 ≤ 2*n => n ≥ 256 / 2 => n ≥ 128 => n0 = 127
+c) 2^n ≤ 2 ^ 2*n => n ≤ 2*n => n0 = 1, da 1 ≤ 2 * 1
+d)
