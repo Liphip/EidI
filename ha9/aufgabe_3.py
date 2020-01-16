@@ -1,4 +1,6 @@
+import logging
 import random
+import time
 import sys
 
 
@@ -108,35 +110,68 @@ def wieviele(stand):  # geaendert
 
 
 # Sternchenaufgabe. Sie duerfen diese Funktion veraendern.
-def generiere(stand):
-    possible = [(i, j) for i in range(9) for j in range(9)]
+def generiere(stand, first=True):
+    logging.debug("Starting 'generiere'")
+
+    def possible(stand) -> bool:
+        logging.debug("Starting 'possible'")
+        # print("Testing...")
+        for i in stand:
+            # print(i, stand[i])
+            if stand[i] != {1, 2, 3, 4, 5, 6, 7, 8, 9}:
+                # print("Valid")
+                logging.info("Finished 'possible' with invalid stand")
+                return False
+        logging.info("Finished 'possible' with valid stand")
+        return True
 
     def setRandomCell(stand):
+        logging.debug("Starting 'setRandomCell'")
         tested = []
         standc = stand.copy()
+        logging.info("Searching random Cell")
+        startTime = time.time_ns()
         randCell = (random.randint(0, 8), random.randint(0, 8))
-        tested.append(randCell)
-        while not len(stand[randCell]) == 9 or randCell in tested:
-            tested.append(randCell)
+        while not len(stand[randCell]) == 9 or randCell in tested and len(tested) < 80:
+            # test = randCell in tested
+            # print("Searching...", randCell, stand[randCell], len(stand[randCell]), test)
             randCell = (random.randint(0, 8), random.randint(0, 8))
+            if not randCell in tested:
+                tested.append(randCell)
+        if len(tested) >= 80:
+            logging.fatal("Can't find new random Cell")
+            logging.fatal("Terminating Process with code -1")
+            exit(-1)
+        logging.debug("Found random Cell in " + str(time.time_ns() - startTime) + "ns")
         standc[randCell] = {random.randint(1, 9)}
-
+        logging.debug("Finished 'setRandomCell' with new stand")
         return standc
 
-    # print()
+    logging.info("Validating stand")
+    if first:
+        if not possible(stand):
+            # print("Invalid")
+            return stand
+
+    # print("Setting random Cell...")
     standc = setRandomCell(stand)
-    # print()
-    # ausgabe(stand)
-    # print()
-    # ausgabe(standc)
-    if wieviele(standc) <= 1:
-        print("1")
-        return generiere(stand)
-    elif wieviele(standc) >= 1:
-        print("2")
-        return generiere(standc)
+    # print("Random Cell set")
+
+    logging.debug("Testing possibilities")
+    logging.debug("Starting 'wieviele'")
+    possibilities = wieviele(standc)
+    logging.info("Finished 'wieviele' with result " + str(possibilities))
+    if possibilities < 1:
+        # print("1")
+        logging.info("Possibilities to low -> restarting 'generiere' recursive with original stand")
+        return generiere(stand, False)
+    elif possibilities > 1:
+        # print("2")
+        logging.info("Possibilities to high -> restarting 'generiere' recursive with new stand")
+        return generiere(standc, False)
     else:
-        print("3")
+        # print("3")
+        logging.info("Finished 'generiere' with valid Stand")
         return standc
 
 
@@ -170,8 +205,6 @@ def init1():
     stand[(7, 7)] = {1}
     stand[(8, 1)] = {9}
     stand[(8, 6)] = {4}
-
-
 
 
 # Sie duerfen diese Funktion nicht veraendern.
@@ -243,11 +276,17 @@ def init3():
 
 
 if __name__ == "__main__":
-    #print(sys.getrecursionlimit())
-    #sys.setrecursionlimit(10000)
-    #print(sys.getrecursionlimit())
+    logging.basicConfig(filename='log.txt', level=logging.DEBUG, format='[%(asctime)s] %(levelname)s:%(message)s',
+                        datefmt='%I:%M:%S', filemode='w')
+
+    logging.debug("Started")
+    # print(sys.getrecursionlimit())
+    # sys.setrecursionlimit(10000)
+    # print(sys.getrecursionlimit())
 
     stand = {(i, j): set(range(1, 10)) for i in range(9) for j in range(9)}
+    logging.info("Stand set to: " + str(stand))
+    # print(stand)
     # stand[(6, 7)] = {6}
 
     # stand[(7, 3)] = {7}
@@ -257,14 +296,19 @@ if __name__ == "__main__":
     # stand[(8, 3)] = {9}
     # stand[(8, 5)] = {6}
     # stand[(8, 7)] = {8}
-
+    logging.debug("Starting 'init'")
     init1()
+    logging.info("Init finished -> stand set to: " + str(stand))
 
     # print("Wir wollen folgendes Sudoku loesen")
     # ausgabe(stand)
     # print("Ausgegeben!")
     # erfuellbar(stand)
-    # ausgabe(wieviele(stand))
-    # ausgabe(generiere(stand))
+    ausgabe(generiere(stand))
+    logging.debug("")
     # print("Fertig!")
+    logging.debug("Starting 'wieviele'")
     print(wieviele(stand))
+    logging.debug("Finished 'wieviele'")
+    logging.debug("Finished Process with code 0")
+    exit(0)
