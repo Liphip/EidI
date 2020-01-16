@@ -1,0 +1,14 @@
+Fibonacci Sequenz:
+1, 1, 2, 3, 5, 8, 13
+
+Da jede Modulo Operation immer einen weiteren Funkionsaufruf bedeutet,
+wird RT(fib(n+1), fib(n)) immer n+1 sein. Dies gilt nicht für die erste
+Fibonacci-Zahl.
+
+  fib(n+1) % fib(n) = fib(n-1)
+  => 3 % 2 = 1 ; 8 % 5 = 3
+ 
+ 1 % 1 = 0, d.h. RT = 0
+ 
+Das heißt: Für jedes fib(n+c) kommt immer ein Rekursiver Funktionsaufruf dazu,
+somit gilt auch RT(fib(n+2), fib(n)) = n - 1

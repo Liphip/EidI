@@ -1,0 +1,10 @@
+r(i, n) = n-i
+
+Beweis: 
+   r(i, n+1) = n+1-i
+   
+   Gilt, da für jedes n+a immer nur a
+   weitere Male i vorkommen kann.
+
+   Das heißt r(i, n+1) = r(i, n)+1
+                       = n-i+1 = n+1-i
