@@ -1,0 +1,13 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
+a) Für jeden Aufruf von maxmult suchen wir die größte Zahl b1, die in L vorkommt, wobei wir das erste Element von L
+   nicht betrachten. Diese Zahl wird berechnet durch die Funktion max, die den größten noch vorhandenen Wert in der
+   oben genannten sub-liste findet. Wir multiplizieren diesen Wert mit dem ersten (ausgelassenen) Wert aus L. Dies tun
+   wir für alle sub-listen mit einer Länge größer als 2 und geben jeweils den größeren Wert zurück. Ist also das erste
+   Element der sub-Liste mal dem großten Wert der subliste größer als derselbe Wert der nächstkleineren sub-liste, wird
+   er rurückgegeben.
+b) Die Laufzeit des Programmes ist O(n), da max() eine laufzeit von O(n) und die Laufzeit von maxmult von eben dieser
+   Funktion abhängt.
