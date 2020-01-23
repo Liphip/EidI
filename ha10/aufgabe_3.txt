@@ -1,0 +1,43 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
+
+[i]  T(n) = { 0      wenn n = 1
+           { n - 1  wenn n > 1
+    b) Es Gibt nur so viele Matches, wie es Spieler gibt, da immer nur einer gegen einen Spielt und der verlierer Ausscheidet.
+    c) 31 Minuten.
+
+[ii] T(n) = { 0      wenn n = 1
+           { n/2    wenn n > 1
+    b) Dieses Format stellt einen Binary-Tree dar und hält sich an dessen Regeln.
+    c) 16 Minuten
+
+[iii] T(n) = { 0                                  wenn n = 1
+            { sum[i=0;n-1](n-i)=(1/2)n*(n + 1)   wenn n > 1
+   b) Es gibt n-1 Level (jeder gegen jeden; unterstes Level besteht aus 2 Personen) und es gibt auf jedem Level einen
+      Teilnehmer mehr als beim vorherigen Level (von unten, s. Abb 3.1) und i Matches wobei i die Nummer des Levels ist.
+                  + Abb. 3.1 +
+                  |      o   |
+                  |     /    |
+                  |    o     |
+                  |   /|     |
+                  |  o o     |
+                  +----------+
+    c) 528 Minuten oder 8.8 Stunden.
+
+[iv] T(n) = { 0                              wenn n = 1
+           { 1                              wenn n = 2
+           { sum[i=1;n-1]((2*T(i - 1))+1)   wenn n > 1
+   b) Es gibt n-1 Level. Die kleinste Einheit sind 3 Personen (Abb 4.1). Erst spielt P2 gegen P3, der Verlierer
+      spielt gegen P1 und der Gewinner dieses Matches spielt gegen den Gewinner der vorherigen Matches, also sind
+      es hier (2 * 1) + 1. Also werden immer (2 * i) + 1 wobei i die Anzahl der Vorherigen matches ist.
+
+         +-- Abb. 4.1 --+
+         |              |
+         |      P1      |
+         |     /  \     |
+         |    P2  P3    |
+         +--------------+
+   c) 2.147.483.647 Minuten oder 4085,77 Jahre.

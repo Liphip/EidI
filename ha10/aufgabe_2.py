@@ -1,3 +1,9 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
+
 def maxmult_lin(L: list) -> int:
     a, b = 0, 0
     

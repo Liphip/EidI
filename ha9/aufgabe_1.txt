@@ -10,3 +10,25 @@ Anmerkung: Bitte mathemathisch klarer Ausdrücken! Ich könnte einfach für jede
 angefügt, da nur eine "Angabe", keine "Berechnung" gefragt ist.
 
 
+C) f(n) ≤ c * g(n)
+   Induktionsbehauptung:
+       2^n ≤ (3^n) - 100 gilt für n ≥ 5 und C = 1
+
+   Induktionsanfang:
+         2^5 ≤ (3^5) - 100
+     <=> 32 ≤ 143 => stimmt!
+
+   Induktionsschritt:
+         2^(n+1) ≤ (3^(n+1)) - 100
+     <=> (2^n) * (2^1) ≤ ((3^n) * (3^1)) - 100
+     <=> 2 * (2^n) ≤ 3 * (3^n) - 100
+
+         Ersetze 2^n durch h und (3^n - 100) durch j:
+
+     <=> 2 * h ≤ 3 * j
+
+         Das heißt nach Induktionsbehauptung:
+             h ≤ j also auch 2 * h ≤ 3 * j
+         demnach gilt
+             2^n ≤ (3^n) - 100
+         für alle n ≥ 5 und C = 1
