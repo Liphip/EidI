@@ -4,18 +4,18 @@ import random
 
 
 def einfuegen(L, e):
-    for i in range(1, len(L)-1):
+    if len(L) == 0:
+        return 0
+
+    for i in range(1, len(L)):
         if L[i] >= e > L[i - 1]:
             return i
-
-    return 0
 
 
 def sortiere(L):
     M = []
-    for i in range(len(L)):
-        e = L[i]
-        # print(M, e)
+    N = L.copy()
+    for e in N:
         M.insert(einfuegen(M, e), e)
     return M
 
