@@ -20,11 +20,13 @@ class Gallier(Mensch):
     def __init__(self, wildschweine, name, weiblich):
         super().__init__(name, weiblich)
         self._wildschweine = wildschweine
-        if (self.name[-3:0] != "ine" and weiblich) or (self.name[-2:0] != "ix" and not weiblich):
+        if (not self.name.endswith("ine") and weiblich) or (not self.name.endswith("ix") and not weiblich):
             self.name += "ine" if weiblich else "ix"
 
     def set_name(self, neuername):
-        if (self.name[-3:0] != "ine" and self.get_weiblich()) or (self.name[-2:0] != "ix" and not self.get_weiblich()):
+        self.name = neuername
+        if (not self.name.endswith("ine") and self.get_weiblich()) or (
+                not self.name.endswith("ix") and not self.get_weiblich()):
             self.name += "ine" if self.get_weiblich() else "ix"
 
     def get_wildschweine(self):
@@ -40,13 +42,15 @@ class Roemer(Mensch):
     def __init__(self, looses, name, weiblich):
         super().__init__(name, weiblich)
         self.looses = looses
-        if (self.name[-1:0] != "a" and weiblich) or (self.name[-2:0] != "us" and not weiblich):
+        if (not self.name.endswith("a") and weiblich) or (not self.name.endswith("us") and not weiblich):
             self.name += "a" if weiblich else "us"
         if Roemer.imperator is None:
             Roemer.imperator = self
 
     def set_name(self, neuername):
-        if (self.name[-1:0] != "a" and self.get_weiblich()) or (self.name[-2:0] != "us" and not self.get_weiblich()):
+        self.name = neuername
+        if (not self.name.endswith("a") and self.get_weiblich()) or (
+                not self.name.endswith("us") and not self.get_weiblich()):
             self.name += "a" if self.get_weiblich() else "us"
 
     def verliere(self):
@@ -66,8 +70,8 @@ class Dorf:
         self.barde = barde
         if self.druide not in self.bewohner:
             self.bewohner.add(druide)
-        if self.druide not in self.bewohner:
-            self.bewohner.add(druide)
+        if self.barde not in self.bewohner:
+            self.bewohner.add(barde)
 
     def get_druide(self):
         return self.druide
@@ -91,7 +95,10 @@ class Dorf:
 
 class Legion:
     def __init__(self, soldaten: set, zenturio: Roemer):
-        self.soldaten: set = soldaten
+        self.soldaten = set()
+        for each in soldaten:
+            if not each.get_weiblich():
+                self.soldaten.add(each)
         self.zenturio = zenturio
 
     def get_zenturio(self):
@@ -115,22 +122,25 @@ class Legion:
 def wettkampf(ein_dorf: Dorf, eine_legion: Legion):
     if len(ein_dorf.bewohner) == len(eine_legion.soldaten):
         iGallier = 0
-        for iRoemer in len(eine_legion.get_soldaten()):
+        for iRoemer in range(len(eine_legion.get_soldaten())):
             if iGallier >= len(ein_dorf.get_bewohner()) - 1:
-                print("Gallier " + ein_dorf.get_bewohner()[
-                    random.randint(0, len(ein_dorf.get_bewohner()))].get_name() + " misst sich mit Roemer " +
-                      eine_legion.get_soldaten()[iRoemer].get_name())
+                print("Gallier " + list(ein_dorf.get_bewohner())[
+                    random.randint(0, len(ein_dorf.get_bewohner()) - 1)].get_name() + " misst sich mit Roemer " +
+                      list(eine_legion.get_soldaten())[iRoemer].get_name())
+                list(eine_legion.get_soldaten())[iRoemer].verliere()
             else:
-                print("Gallier " + ein_dorf.get_bewohner()[iGallier].get_name() + " misst sich mit Roemer " +
-                      eine_legion.get_soldaten()[iRoemer].get_name())
+                print("Gallier " + list(ein_dorf.get_bewohner())[iGallier].get_name() + " misst sich mit Roemer " +
+                      list(eine_legion.get_soldaten())[iRoemer].get_name())
+                list(eine_legion.get_soldaten())[iRoemer].verliere()
                 iGallier += 1
 
     print(
         "Gallier " + ein_dorf.get_barde().get_name() + " misst sich mit Roemer " + eine_legion.get_zenturio().get_name())
+    eine_legion.get_zenturio().verliere()
 
     for gallier in ein_dorf.bewohner:
-        gallier.iss_wildschweine()
-    ein_dorf.druide.iss_wildschweine()
+        if not gallier is ein_dorf.barde:
+            gallier.iss_wildschweine()
 
 
 # Nicht veraendern!
@@ -141,9 +151,17 @@ if __name__ == '__main__':
     Laureline, Canine, Apfelsine = Gallier(0, "Laurel", True), Gallier(0, "Canine", True), Gallier(0, "Apfelsine", True)
     Praefix, Infix, Postfix = Gallier(0, "Praefix", False), Gallier(0, "Infix", False), Gallier(0, "Postf", False)
     Salta, Mendoza, Ushuaia = Roemer(0, "Salt", True), Roemer(0, "Mendoza", True), Roemer(0, "Ushuaia", True)
-    Primus, Secundus, Tertius, Quartus, Quintus = Roemer(0, "Primus", False), Roemer(0, "Secundus", False), Roemer(0, "Tertius", False), Roemer(0, "Quartus", False), Roemer(0, "Quint", False)
-    Oelixdorf, Bekdorf = Dorf({Laureline, Apfelsine, Praefix}, Laureline, Praefix), Dorf({Laureline, Postfix, Infix}, Infix, Canine)
+    Primus, Secundus, Tertius, Quartus, Quintus = Roemer(0, "Primus", False), Roemer(0, "Secundus", False), Roemer(0,
+                                                                                                                   "Tertius",
+                                                                                                                   False), Roemer(
+        0, "Quartus", False), Roemer(0, "Quint", False)
+    Oelixdorf, Bekdorf = Dorf({Laureline, Apfelsine, Praefix}, Laureline, Praefix), Dorf({Laureline, Postfix, Infix},
+                                                                                         Infix, Canine)
     Hispana = Legion({Quintus, Quartus, Tertius, Mendoza}, Salta)
+
+    # print(Laureline.get_name(), Canine.get_name(), Apfelsine.get_name(), Praefix.get_name(), Infix.get_name(),
+    #      Postfix.get_name(), Salta.get_name(), Mendoza.get_name(), Ushuaia.get_name(), Primus.get_name(),
+    #      Secundus.get_name(), Tertius.get_name(), Quartus.get_name(), Quintus.get_name())
 
     # Diesen Teil duerfen Sie nicht veraendern
 
