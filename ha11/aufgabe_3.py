@@ -69,10 +69,10 @@ def qsort(liste):
 
     return qsort(linke) + liste[pivot:pivot + 1] + qsort(rechte)
 
+
 # Implementieren Sie diese Funktion
 def radixsort(liste, stelligkeit, tiefe):
     pass
-
 
 # Nicht veraendern!
 if __name__ == '__main__':

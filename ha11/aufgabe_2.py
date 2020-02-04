@@ -256,3 +256,4 @@ if __name__ == '__main__':
         for funktion in funktionen:
             teste(liste, funktion)
         print("\n")
+
