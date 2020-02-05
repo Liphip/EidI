@@ -37,15 +37,15 @@ class Gallier(Mensch):
 
 
 class Roemer(Mensch):
-    imperator = None
+    _imperator = None
 
-    def __init__(self, looses, name, weiblich):
+    def __init__(self, losses, name, weiblich):
         super().__init__(name, weiblich)
-        self.looses = looses
+        self._losses = losses
         if (not self.name.endswith("a") and weiblich) or (not self.name.endswith("us") and not weiblich):
             self.name += "a" if weiblich else "us"
-        if Roemer.imperator is None:
-            Roemer.imperator = self
+        if Roemer._imperator is None:
+            Roemer._imperator = self
 
     def set_name(self, neuername):
         self.name = neuername
@@ -54,73 +54,73 @@ class Roemer(Mensch):
             self.name += "a" if self.get_weiblich() else "us"
 
     def verliere(self):
-        self.looses += 1
+        self._losses += 1
 
     def wie_oft_verloren(self):
-        return self.looses
+        return self._losses
 
     def werde_imperator(self):
-        Roemer.imperator = self
+        Roemer._imperator = self
 
 
 class Dorf:
     def __init__(self, bewohner: set, druide: Gallier, barde: Gallier):
-        self.bewohner: set = bewohner
-        self.druide = druide
-        self.barde = barde
-        if self.druide not in self.bewohner:
-            self.bewohner.add(druide)
-        if self.barde not in self.bewohner:
-            self.bewohner.add(barde)
+        self._bewohner: set = bewohner
+        self._druide = druide
+        self._barde = barde
+        if self._druide not in self._bewohner:
+            self._bewohner.add(druide)
+        if self._barde not in self._bewohner:
+            self._bewohner.add(barde)
 
     def get_druide(self):
-        return self.druide
+        return self._druide
 
     def get_barde(self):
-        return self.barde
+        return self._barde
 
     def get_bewohner(self):
-        return self.bewohner
+        return self._bewohner
 
     def set_druide(self, druide: Gallier):
-        self.druide = druide
-        if druide not in self.bewohner:
-            self.bewohner.add(druide)
+        self._druide = druide
+        if druide not in self._bewohner:
+            self._bewohner.add(druide)
 
     def set_barde(self, barde: Gallier):
-        self.barde = barde
-        if barde not in self.bewohner:
-            self.bewohner.add(barde)
+        self._barde = barde
+        if barde not in self._bewohner:
+            self._bewohner.add(barde)
 
 
 class Legion:
     def __init__(self, soldaten: set, zenturio: Roemer):
-        self.soldaten = set()
+        self._soldaten = set()
         for each in soldaten:
             if not each.get_weiblich():
-                self.soldaten.add(each)
-        self.zenturio = zenturio
+                self._soldaten.add(each)
+        self._zenturio = zenturio
 
     def get_zenturio(self):
-        return self.zenturio
+        return self._zenturio
 
     def get_soldaten(self):
-        return self.soldaten
+        return self._soldaten
 
     def set_zenturio(self, zenturio: Roemer):
-        self.zenturio = zenturio
+        self._zenturio = zenturio
 
     def rekrutiere(self, ein_roemer: Roemer):
-        if ein_roemer.get_weiblich() == False and not ein_roemer in self.soldaten and not ein_roemer is self.zenturio:
-            self.soldaten.add(ein_roemer)
+        if ein_roemer.get_weiblich() == False and not ein_roemer in self._soldaten and not ein_roemer is self._zenturio:
+            self._soldaten.add(ein_roemer)
 
     def pensioniere(self, ein_roemer: Roemer):
-        if ein_roemer in self.soldaten:
-            self.soldaten.remove(ein_roemer)
+        if ein_roemer in self._soldaten:
+            self._soldaten.remove(ein_roemer)
 
 
 def wettkampf(ein_dorf: Dorf, eine_legion: Legion):
-    if len(ein_dorf.bewohner) == len(eine_legion.soldaten):
+    if len(ein_dorf.get_bewohner()) == len(eine_legion.get_soldaten()):
         iGallier = 0
         for iRoemer in range(len(eine_legion.get_soldaten())):
             if iGallier >= len(ein_dorf.get_bewohner()) - 1:
@@ -138,8 +138,8 @@ def wettkampf(ein_dorf: Dorf, eine_legion: Legion):
         "Gallier " + ein_dorf.get_barde().get_name() + " misst sich mit Roemer " + eine_legion.get_zenturio().get_name())
     eine_legion.get_zenturio().verliere()
 
-    for gallier in ein_dorf.bewohner:
-        if not gallier is ein_dorf.barde:
+    for gallier in ein_dorf.get_bewohner():
+        if not gallier is ein_dorf.get_barde():
             gallier.iss_wildschweine()
 
 
@@ -177,12 +177,12 @@ if __name__ == '__main__':
     if not (Primus.get_name() == "Primus" and Quintus.get_name() == "Quintus"):
         print("Fehler: Roemer falsch benannt")
 
-    if not (Roemer.imperator == Salta):
+    if not (Roemer._imperator == Salta):
         print("Fehler: Imperator falsch")
 
     Primus.werde_imperator()
 
-    if not Roemer.imperator == Primus:
+    if not Roemer._imperator == Primus:
         print("Fehler: Thronfolge kaputt")
 
     Laureline.set_name("Geraldine")
