@@ -38,7 +38,7 @@ class Vliste:
     def nachListe(self):
         return [self._eintrag] + self._nachfolger.nachListe() if self._nachfolger is not None else [self._eintrag]
 
-    #def debug(self, ret: str = "", depth: int = 0):
+    # def debug(self, ret: str = "", depth: int = 0):
     #    depth += 1
     #    if self._nachfolger is None:
     #        return ret + " ( " + str(self._eintrag) + " )" + (depth - 1) * ")"
@@ -51,7 +51,11 @@ def nachVliste(list: list):
 
 
 if __name__ == '__main__':
+    # Fuer Aufgabenteil a
     testList = Vliste(5, Vliste("ab", Vliste(0.36, None)))
+
+    # Debugging
+
     testList2 = Vliste(5, Vliste("ab", Vliste(0.36, Vliste(True, None))))
     testList3 = Vliste(1, Vliste(2, None))
     testList4 = Vliste(1, Vliste(2, Vliste(3, None)))
@@ -67,4 +71,4 @@ if __name__ == '__main__':
     print(testList2.nachListe())
     print(Vliste(1, Vliste(2, Vliste(3, None))).filter(lambda x: x % 2 == 1).debug())
     print(Vliste(1, Vliste(2, Vliste(3, None))).map(lambda x: x + 2).debug())
-    #print(testList.debug(), testList2.debug(), testList3.debug(), testList4.debug(), testList5.debug(), testList6.debug(), testList7.debug(), sep="\n")
+    # print(testList.debug(), testList2.debug(), testList3.debug(), testList4.debug(), testList5.debug(), testList6.debug(), testList7.debug(), sep="\n")
