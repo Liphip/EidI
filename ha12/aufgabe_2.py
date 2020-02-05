@@ -64,7 +64,7 @@ if __name__ == '__main__':
     testList7 = nachVliste([3, 2, 1])
     testList6.extend(Vliste(True, None))
     testList3.append(3)
-    print(testList.nachfolger.nachfolger.eintrag)
+    print(testList._nachfolger._nachfolger._eintrag)
     print(testList2.gleich(testList6))
     print(testList.gleich(testList5))
     print(testList3.gleich(testList4))
