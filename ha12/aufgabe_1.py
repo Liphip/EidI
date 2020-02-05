@@ -1,3 +1,9 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
+
 class Mensch(object):
 
     def __init__(self, name, weiblich):
@@ -129,7 +135,8 @@ def wettkampf(ein_dorf: Dorf, eine_legion: Legion):
 
     for i in range(max(len(gallier), len(roemer))):
         r = roemer[i % len(roemer)]
-        print(f'Gallier {gallier[i % len(gallier)].name} misst sich mit {"Roemer" if r != eine_legion.zenturio else "Zenturio"} {r.name}')
+        print(
+            f'Gallier {gallier[i % len(gallier)].name} misst sich mit {"Roemer" if r != eine_legion.zenturio else "Zenturio"} {r.name}')
         roemer[i % len(roemer)].verliere()
 
     for g in ein_dorf.bewohner:
@@ -139,7 +146,6 @@ def wettkampf(ein_dorf: Dorf, eine_legion: Legion):
 
 # Nicht veraendern!
 if __name__ == '__main__':
-
 
     # Loesen Sie Aufgabenteil g) hier:
     Laureline = Gallier('Laurel', True)
