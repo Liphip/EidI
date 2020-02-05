@@ -4,11 +4,11 @@ class Vliste:
         self._nachfolger: Vliste = nachfolger
 
     def gleich(self, other):
-        if self._eintrag == other.eintrag:
-            if self._nachfolger is not None and other.nachfolger is not None:
-                if self._nachfolger.gleich(other.nachfolger):
+        if self._eintrag == other._eintrag:
+            if self._nachfolger is not None and other._nachfolger is not None:
+                if self._nachfolger.gleich(other._nachfolger):
                     return True
-            elif self._nachfolger == other.nachfolger:
+            elif self._nachfolger == other._nachfolger:
                 return True
         return False
 
@@ -69,6 +69,6 @@ if __name__ == '__main__':
     print(testList.gleich(testList5))
     print(testList3.gleich(testList4))
     print(testList2.nachListe())
-    print(Vliste(1, Vliste(2, Vliste(3, None))).filter(lambda x: x % 2 == 1).debug())
-    print(Vliste(1, Vliste(2, Vliste(3, None))).map(lambda x: x + 2).debug())
+    # print(Vliste(1, Vliste(2, Vliste(3, None))).filter(lambda x: x % 2 == 1).debug())
+    # print(Vliste(1, Vliste(2, Vliste(3, None))).map(lambda x: x + 2).debug())
     # print(testList.debug(), testList2.debug(), testList3.debug(), testList4.debug(), testList5.debug(), testList6.debug(), testList7.debug(), sep="\n")
