@@ -1,0 +1,18 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
+
+a) Berechnet, ob n eine Primzahl ist.
+     Best Case: O(1), wenn n < 2
+     Worst Case: O(n), da die while-Schleife (ungefähr) (n/2)-mal ausgeführt werden muss
+b) Berechnet 1 (ja, den Wert 1)
+     Best Case / Worst Case: O(1), da n nicht negativ sein darf (Element der natürlichen Zahlen sein muss)
+                                   ist n immer <= 0, dh i ** 2 ist immer 1 ** 2 > 0, dh. immer Ende mit i = 1.
+c) Bubble-Sort Algorithmus (Sortiert eine liste)
+     Best Case: O(n), wenn die Liste schon sortiert ist
+     Worst Case: O(n^2), wenn die List umgekehrt sortiert ist
+d) Berechnet 2^(2^n)
+     Best Case: O(1), für n = 0, da i = 1 und somit die zweite for-schleife nur einmal laufen muss
+     Worst Case: O(2^n), da die Erste for-schleife n-mal laufen muss und die zweite 2^n mal laufen muss

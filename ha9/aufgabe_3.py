@@ -292,6 +292,7 @@ if __name__ == "__main__":
     # stand[(7, 3)] = {7}
     # stand[(7, 5)] = {3}
     # stand[(7, 7)] = {9}
+    ausgabe(generiere(stand))
 
     # stand[(8, 3)] = {9}
     # stand[(8, 5)] = {6}
@@ -304,8 +305,6 @@ if __name__ == "__main__":
     # ausgabe(stand)
     # print("Ausgegeben!")
     # erfuellbar(stand)
-    ausgabe(generiere(stand))
-    logging.debug("")
     # print("Fertig!")
     logging.debug("Starting 'wieviele'")
     print(wieviele(stand))
