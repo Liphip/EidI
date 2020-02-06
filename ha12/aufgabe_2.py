@@ -1,3 +1,9 @@
+"""
+Copyright (c) 2019  Luis Michaelis, Philip Laskowicz
+Licensed under MIT (https://opensource.org/licenses/mit-license.php).
+"""
+
+
 class Vliste:
     def __init__(self, eintrag, nachfolger):
         self._eintrag = eintrag
